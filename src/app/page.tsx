@@ -273,9 +273,9 @@ export default function Home() {
           </div>
 
           {/* Photo area — top portion of screen */}
-          <div className="relative w-full pt-48 flex-shrink-0" style={{ minHeight: '65vh' }}>
+          <div className="relative w-full pt-32 flex-shrink-0" style={{ minHeight: '65vh' }}>
             <div className="absolute inset-0 flex justify-end items-end">
-              <div className="relative w-[100%] max-w-[420px] h-full -mr-24 translate-y-12">
+              <div className="relative w-[100%] max-w-[420px] h-full -mr-24 translate-y-16">
                 <Image 
                   src="/brand/IMG-20260526-WA0024.png" 
                   alt="Advogado Lucas Matoso de Morais"
