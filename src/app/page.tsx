@@ -100,7 +100,7 @@ export default function Home() {
     const mensagem = fd.get('mensagem') as string;
 
     const text = encodeURIComponent(
-      `Olá Dr. Lucas! Gostaria de agendar uma consulta.\n\n` +
+      `Olá Adv. Lucas! Gostaria de agendar uma consulta.\n\n` +
       `*Nome:* ${nome}\n` +
       `*Serviço de interesse:* ${servico}\n` +
       `*Mensagem:* ${mensagem}`
@@ -431,7 +431,7 @@ export default function Home() {
                     &quot;Cada direito conquistado representa uma vida transformada e a justiça restabelecida.&quot;
                   </p>
                   <cite className="block text-sm text-gold-dark font-medium mt-2 not-italic">
-                    Dr. Lucas Matoso — OAB/RN 19.453
+                    Adv. Lucas Matoso — OAB/RN 19.453
                   </cite>
                 </blockquote>
                 
@@ -443,7 +443,7 @@ export default function Home() {
                     className="inline-flex items-center gap-2 px-7 py-3.5 bg-navy text-white font-semibold text-sm rounded-lg hover:bg-navy-mid active:scale-[0.98] transition-all cursor-pointer"
                   >
                     <Phone className="h-4 w-4" />
-                    Falar com Dr. Lucas
+                    Falar com Adv. Lucas
                   </a>
                 </div>
               </ScrollReveal>
@@ -455,7 +455,7 @@ export default function Home() {
                  <div className="relative w-full h-[450px] sm:h-[550px]">
                    <Image 
                      src="/brand/IMG-20260526-WA0025.png" 
-                     alt="Dr. Lucas Matoso"
+                     alt="Adv. Lucas Matoso"
                      fill
                      className="object-contain object-right-bottom drop-shadow-2xl"
                      sizes="(max-width: 1024px) 100vw, 2000px"
@@ -472,7 +472,7 @@ export default function Home() {
         <div className="hidden lg:block absolute bottom-0 right-0 h-full w-[50vw] max-w-[900px] z-10 pointer-events-none">
           <Image 
             src="/brand/IMG-20260526-WA0025.png" 
-            alt="Dr. Lucas Matoso"
+            alt="Adv. Lucas Matoso"
             fill
             className="object-contain object-bottom object-right drop-shadow-2xl pointer-events-auto"
             sizes="(max-width: 1024px) 100vw, 2000px"
@@ -813,7 +813,7 @@ export default function Home() {
               </button>
 
               <p className="text-xs text-gray-400 text-center leading-relaxed">
-                Ao enviar, você será direcionado ao WhatsApp do Dr. Lucas para conclusão do agendamento.
+                Ao enviar, você será direcionado ao WhatsApp do Adv. Lucas para conclusão do agendamento.
               </p>
             </form>
           </ScrollReveal>
