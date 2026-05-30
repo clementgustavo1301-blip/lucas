@@ -208,59 +208,43 @@ export default function Home() {
 
       {/* ─── MOBILE MENU ─── */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-[#0A1128]/95 backdrop-blur-2xl flex flex-col px-8 lg:hidden animate-in fade-in duration-300">
-          {/* Decorative background gradients */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-900/20 rounded-full blur-[100px]" />
+        <div className="fixed inset-0 z-[100] bg-navy/98 backdrop-blur-lg flex flex-col justify-center items-center lg:hidden animate-in fade-in duration-300">
           
-          <div className="flex justify-between items-center py-6 relative z-10 border-b border-white/10">
-            <span className="text-gold font-serif text-lg tracking-[0.2em] uppercase">Menu</span>
-            <button 
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 -mr-2 text-white/70 hover:text-white transition-colors cursor-pointer"
-              aria-label="Fechar menu"
-            >
-              <X className="h-8 w-8" />
-            </button>
-          </div>
+          <button 
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute top-6 right-6 p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
+            aria-label="Fechar menu"
+          >
+            <X className="h-8 w-8" />
+          </button>
 
-          <div className="flex-1 flex flex-col justify-center relative z-10 mt-8">
-            <nav className="flex flex-col gap-8">
-              {navLinks.map((link, idx) => (
-                <a
-                  key={link.id}
-                  href={`#${link.id}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="group flex items-center gap-6 cursor-pointer opacity-0"
-                  style={{ 
-                    animation: `fade-in-up 0.5s ease-out forwards`,
-                    animationDelay: `${idx * 75}ms` 
-                  }}
-                >
-                  <span className="text-gold/40 font-serif text-sm w-6 group-hover:text-gold transition-colors">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="font-serif text-[2.5rem] text-white group-hover:text-gold group-hover:translate-x-2 transition-all duration-300">
-                    {link.label}
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
+          <nav className="flex flex-col gap-8 items-center w-full px-6 text-center">
+            {navLinks.map((link, idx) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-3xl font-serif text-white/90 hover:text-gold transition-colors opacity-0"
+                style={{ 
+                  animation: `fade-in-up 0.5s ease-out forwards`,
+                  animationDelay: `${idx * 60}ms` 
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-          <div className="pb-12 relative z-10 opacity-0" style={{ animation: 'fade-in-up 0.6s ease-out forwards', animationDelay: '400ms' }}>
+          <div className="absolute bottom-12 left-0 right-0 px-8 flex justify-center opacity-0" style={{ animation: 'fade-in-up 0.5s ease-out forwards', animationDelay: '350ms' }}>
             <a 
               href="https://wa.me/5584991594538"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 w-full px-6 py-4.5 bg-gold text-navy font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-gold-dark hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer shadow-[0_8px_30px_rgba(197,168,128,0.25)]"
+              className="flex items-center justify-center gap-2 w-full max-w-[280px] px-6 py-4 border border-gold/30 bg-gold/5 text-gold text-[13px] font-medium tracking-wide uppercase rounded-md hover:bg-gold hover:text-navy transition-all duration-300"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-4 w-4" />
               Falar com Advogado
             </a>
-            <div className="mt-8 flex flex-col items-center gap-2">
-              <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase">Matoso Morais Advocacia</p>
-            </div>
           </div>
         </div>
       )}
