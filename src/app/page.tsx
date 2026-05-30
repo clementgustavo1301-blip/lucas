@@ -57,7 +57,7 @@ export default function Home() {
       const headerTargetY = headerCenterY - (targetH / 2);
 
       const heroTargetX = isMob ? -24 : -100 + 48;
-      const heroTargetY = isMob ? 50 : 120;
+      const heroTargetY = isMob ? 150 : 120;
 
       const currentX = headerTargetX + (heroTargetX - headerTargetX) * animationFactor;
       const currentY = headerTargetY + (heroTargetY - headerTargetY) * animationFactor;
