@@ -274,7 +274,7 @@ export default function Home() {
 
           {/* Photo area — top portion of screen */}
           <div className="relative w-full pt-48 flex-shrink-0" style={{ minHeight: '65vh' }}>
-            <div className="absolute inset-0 flex justify-end items-end">
+            <div className="absolute top-28 bottom-0 left-0 right-0 flex justify-end items-end">
               <div className="relative w-[100%] max-w-[420px] h-full -mr-24">
                 <Image 
                   src="/brand/IMG-20260526-WA0024.png" 
