@@ -293,8 +293,6 @@ export default function Home() {
 
           {/* Content area — bottom portion — pulled up to fill empty space and balance the layout */}
           <div className="relative z-20 flex-1 flex flex-col justify-end px-6 pb-12 -mt-20 safe-area-bottom">
-            {/* Gold accent line */}
-            <div className="w-10 h-[2px] bg-gold/60 mb-4" />
             
             <p className="text-gold text-[13px] font-semibold tracking-[0.15em] uppercase mb-3">
               Escritório Especializado
