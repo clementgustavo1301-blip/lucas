@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MinimalMap } from '@/components/Map';
 import { 
@@ -23,72 +23,20 @@ import ScrollReveal from '@/components/scroll-reveal';
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [headerSolid, setHeaderSolid] = useState(false);
-  const [logoPastThreshold, setLogoPastThreshold] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateLogoPosition = () => {
-      if (!logoRef.current) return;
-      
-      const scrollY = window.scrollY;
-      const isMob = window.innerWidth < 1024;
-      const winWidth = document.documentElement.clientWidth;
-
-      const scrollThreshold = isMob ? 300 : 350; 
-      const progress = Math.min(scrollY / scrollThreshold, 1);
-      
-      // Aplicando uma curva de suavização (ease-out sine) para a transição ficar super suave
-      const easeProgress = Math.sin((progress * Math.PI) / 2);
-      const animationFactor = 1 - easeProgress; 
-
-      const baseW = isMob ? 900 : 2400; 
-      const baseH = isMob ? 224 : 533; 
-
-      const targetW = isMob ? 260 : 330; 
-      const targetH = isMob ? 58 : 73;   
-
-      // Calculate scale instead of width/height to avoid layout reflows on Map/WebGL
-      const endScale = targetW / baseW;
-      const currentScale = endScale + (1 - endScale) * animationFactor;
-
-      const headerCenterY = isMob ? 22 : 24; 
-      const headerTargetX = (winWidth / 2) - (targetW / 2);
-      const headerTargetY = headerCenterY - (targetH / 2);
-
-      const heroTargetX = isMob ? -24 : -100 + 48;
-      const heroTargetY = isMob ? 150 : 120;
-
-      const currentX = headerTargetX + (heroTargetX - headerTargetX) * animationFactor;
-      const currentY = headerTargetY + (heroTargetY - headerTargetY) * animationFactor;
-
-      logoRef.current.style.width = `${baseW}px`;
-      logoRef.current.style.height = `${baseH}px`;
-      logoRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(${currentScale})`;
-      // No CSS transition during active scrolling to allow instant GPU rendering and 120Hz smooth tracking
-      logoRef.current.style.transition = 'none';
-    };
-
     const handleScroll = () => {
-      requestAnimationFrame(updateLogoPosition);
       setHeaderSolid(window.scrollY > 60);
-      setLogoPastThreshold(window.scrollY > (window.innerWidth < 1024 ? 150 : 350));
       setShowBackToTop(window.scrollY > 600);
     };
     
-    const handleResize = () => {
-      requestAnimationFrame(updateLogoPosition);
-    };
-    
-    handleResize();
     handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleResize, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -126,7 +74,27 @@ export default function Home() {
           ? 'bg-white/95 backdrop-blur-sm shadow-[0_1px_0_0_rgba(0,0,0,0.06)]' 
           : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-10 sm:h-12 relative">
+        <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-12 sm:h-14 relative">
+          
+          {/* Static Logo */}
+          <a href="#inicio" className="flex-shrink-0 relative z-10">
+            <div className="relative h-12 sm:h-14 w-[210px] sm:w-[260px]">
+              <Image 
+                src="/brand/logo_horizontal.png" 
+                alt="Matoso Morais Advocacia"
+                fill
+                quality={100}
+                unoptimized
+                className={`object-contain object-left transition-all duration-300 ${
+                  headerSolid 
+                    ? 'brightness-0' 
+                    : 'brightness-0 invert'
+                }`}
+                sizes="260px"
+                priority
+              />
+            </div>
+          </a>
           
           <nav className="hidden lg:flex items-center gap-6 flex-1">
             {navLinks.slice(0, 3).map((link) => (
@@ -177,34 +145,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Animated Logo (Rendered outside header flow for absolute DOM positioning) */}
-      <div 
-        ref={logoRef}
-        className="fixed top-0 left-0 z-[60] pointer-events-none"
-        style={{ 
-          willChange: 'transform',
-          transformOrigin: 'top left'
-        }}
-      >
-        <a 
-          href="#inicio" 
-          className="block pointer-events-auto relative w-full h-full"
-        >
-          <Image 
-            src="/brand/logo_horizontal.png" 
-            alt="Matoso Morais Advocacia"
-            fill
-            quality={100}
-            unoptimized={true}
-            className={`object-contain object-left transition-all duration-300 ${
-              headerSolid && logoPastThreshold 
-                ? 'brightness-0' 
-                : 'brightness-0 invert'
-            }`}
-            priority
-          />
-        </a>
-      </div>
+
 
       {/* ─── MOBILE MENU ─── */}
       {mobileMenuOpen && (
@@ -280,7 +221,7 @@ export default function Home() {
           </div>
 
           {/* Photo area — top portion of screen */}
-          <div className="relative w-full pt-32 flex-shrink-0" style={{ minHeight: '65vh' }}>
+          <div className="relative w-full pt-32 flex-shrink-0" style={{ minHeight: '50vh' }}>
             <div className="absolute inset-0 flex justify-end items-end">
               <div className="relative w-[100%] max-w-[420px] h-full -mr-24 translate-y-16">
                 <Image 
@@ -299,11 +240,11 @@ export default function Home() {
           </div>
 
           {/* Content area — bottom portion — pulled up to fill empty space and balance the layout */}
-          <div className="relative z-20 flex-1 flex flex-col justify-end px-6 pb-12 -mt-20 safe-area-bottom">
+          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 pb-8 -mt-28 safe-area-bottom">
             
-            <p className="text-gold text-[13px] font-semibold tracking-[0.15em] uppercase mb-3">
-              Escritório Especializado
-            </p>
+            <h1 className="font-serif text-[28px] sm:text-[32px] text-white leading-[1.2] font-semibold mb-4 max-w-sm">
+              Defendendo direitos com estratégia e compromisso
+            </h1>
 
             <p className="text-white/85 text-[15px] leading-relaxed max-w-sm font-light mb-6">
               Atuação especializada em direito previdenciário, trabalhista e cível. Soluções jurídicas transparentes e focadas nos seus direitos.
@@ -325,15 +266,15 @@ export default function Home() {
         </div>
 
         {/* ── DESKTOP LAYOUT (unchanged) ── */}
-        <div className="hidden lg:grid relative z-10 w-full px-12 pb-16 pt-32 grid-cols-12 gap-8 items-end">
+        <div className="hidden lg:grid relative z-10 w-full px-12 pb-16 pt-28 grid-cols-12 gap-8 items-start">
           
           {/* Left: Copy */}
-          <div className="col-span-6 flex flex-col pt-[550px] relative z-20">
-            <p className="text-gold text-sm font-medium tracking-wide mb-5">
-              Escritório Especializado
-            </p>
+          <div className="col-span-6 flex flex-col relative z-20">
+            <h1 className="font-serif text-[40px] xl:text-[48px] text-white leading-[1.15] font-semibold max-w-lg">
+              Defendendo direitos com estratégia e compromisso
+            </h1>
 
-            <p className="text-gray-300 text-xl leading-relaxed mt-2 max-w-lg font-light">
+            <p className="text-gray-300 text-xl leading-relaxed mt-6 max-w-lg font-light">
               Atuação especializada em direito previdenciário, trabalhista e cível. Soluções jurídicas transparentes e focadas nos seus direitos.
             </p>
 
@@ -356,33 +297,14 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Stats row */}
-            <div className="flex gap-10 mt-14 pt-8 border-t border-white/8">
-              <div>
-                <span className="font-serif text-3xl font-semibold text-white">98%</span>
-                <span className="block text-xs text-gray-400 mt-1 uppercase tracking-wider font-medium">Aprovação INSS</span>
-              </div>
-              <div>
-                <span className="font-serif text-3xl font-semibold text-white">+10k</span>
-                <span className="block text-xs text-gray-400 mt-1 uppercase tracking-wider font-medium">Atendimentos</span>
-              </div>
-              <div>
-                <span className="font-serif text-3xl font-semibold text-white">+12</span>
-                <span className="block text-xs text-gray-400 mt-1 uppercase tracking-wider font-medium">Anos Atuação</span>
-              </div>
-            </div>
+
           </div>
 
           {/* Right: Portrait & Parallax Symbol */}
           <div className="col-span-6 relative flex justify-end w-full max-w-lg mt-0">
             <ScrollReveal animation="fade-up" duration={1000} delay={200} className="relative z-10 w-full max-w-2xl">
               <div className="relative w-full aspect-[3/4] scale-[1.25] origin-bottom">
-                {/* Parallax Background Symbol */}
-                <div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gold/10 pointer-events-none transition-transform ease-out duration-300 z-0"
-                >
-                  <Scale className="w-[500px] h-[500px]" strokeWidth={0.5} />
-                </div>
+
                 
                 <Image 
                   src="/brand/IMG-20260526-WA0024.png" 
@@ -431,7 +353,7 @@ export default function Home() {
                     &quot;Cada direito conquistado representa uma vida transformada e a justiça restabelecida.&quot;
                   </p>
                   <cite className="block text-sm text-gold-dark font-medium mt-2 not-italic">
-                    Adv. Lucas Matoso — OAB/RN 19.453
+                    Adv. Lucas Matoso — OAB/RN 24.036
                   </cite>
                 </blockquote>
                 
@@ -964,7 +886,7 @@ export default function Home() {
             {/* Info */}
             <div className="md:col-span-4">
               <h4 className="text-sm font-semibold text-white mb-4">Informações</h4>
-              <p className="text-gray-400 text-sm">OAB/RN Nº 19.453</p>
+              <p className="text-gray-400 text-sm">OAB/RN Nº 24.036</p>
               <p className="text-gray-400 text-sm mt-3 leading-relaxed">
                 Somos uma empresa inclusiva. Entre em contato caso precise de adaptações ou recursos de acessibilidade.
               </p>
