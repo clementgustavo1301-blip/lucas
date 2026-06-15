@@ -96,22 +96,9 @@ export default function Home() {
             </div>
           </a>
           
-          <nav className="hidden lg:flex items-center gap-6 flex-1">
-            {navLinks.slice(0, 3).map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className={`text-[13px] font-medium transition-colors duration-200 cursor-pointer hover:text-gold-dark ${
-                  headerSolid ? 'text-gray-600' : 'text-white/80 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden lg:flex items-center justify-end gap-6 flex-1">
-            {navLinks.slice(3).map((link) => (
+          {/* Nav + CTA on the right */}
+          <div className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={`#${link.id}`}
@@ -212,51 +199,36 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,168,128,0.08)_0%,_transparent_60%)] pointer-events-none" />
 
         {/* ── MOBILE LAYOUT ── */}
-        <div className="lg:hidden relative z-10 w-full flex flex-col min-h-[100dvh] overflow-hidden">
+        <div className="lg:hidden relative z-10 w-full flex flex-col pt-28 px-6 pb-12 overflow-hidden items-center justify-center">
           
-          {/* Global Gradient Overlay to seamlessly blend photo into the navy background */}
-          <div className="absolute top-[45vh] bottom-0 left-0 right-0 pointer-events-none z-10 flex flex-col">
-            <div className="h-[20vh] bg-gradient-to-b from-transparent to-navy" />
-            <div className="flex-1 bg-navy" />
+          <div className="relative w-full max-w-[280px] aspect-[4/5] flex-shrink-0">
+             <Image 
+               src="/brand/hero-image-new.jpeg" 
+               alt="Advogado Lucas Matoso de Morais"
+               fill
+               className="object-cover object-top rounded-3xl shadow-2xl"
+               sizes="300px"
+               quality={100}
+               priority
+             />
+             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy/90 to-transparent rounded-b-3xl pointer-events-none" />
           </div>
 
-          {/* Photo area — top portion of screen */}
-          <div className="relative w-full pt-32 flex-shrink-0" style={{ minHeight: '50vh' }}>
-            <div className="absolute inset-0 flex justify-end items-end">
-              <div className="relative w-[100%] max-w-[420px] h-full -mr-24 translate-y-16">
-                <Image 
-                  src="/brand/IMG-20260526-WA0024.png" 
-                  alt="Advogado Lucas Matoso de Morais"
-                  fill
-                  className="object-contain object-bottom"
-                  sizes="420px"
-                  quality={100}
-                  priority
-                />
-              </div>
-            </div>
-            {/* Left side decorative gradient */}
-            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-navy via-navy/50 to-transparent pointer-events-none z-10" />
-          </div>
-
-          {/* Content area — bottom portion — pulled up to fill empty space and balance the layout */}
-          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 pb-8 -mt-28 safe-area-bottom">
-            
-            <h1 className="font-serif text-[28px] sm:text-[32px] text-white leading-[1.2] font-semibold mb-4 max-w-sm">
+          <div className="relative z-20 flex flex-col text-center items-center -mt-32">
+            <h1 className="font-serif text-[28px] sm:text-[32px] text-white leading-[1.2] font-semibold mb-12 drop-shadow-md">
               Defendendo direitos com estratégia e compromisso
             </h1>
 
-            <p className="text-white/85 text-[15px] leading-relaxed max-w-sm font-light mb-6">
+            <p className="text-white/85 text-[15px] leading-relaxed font-light mb-8 max-w-md">
               Atuação especializada em direito previdenciário, trabalhista e cível. Soluções jurídicas transparentes e focadas nos seus direitos.
             </p>
 
-            {/* CTA buttons */}
-            <div className="flex flex-col gap-3 w-full">
+            <div className="w-full max-w-[280px]">
               <a 
                 href="https://wa.me/5584991594538"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-gold text-navy font-bold text-sm rounded-xl hover:bg-gold-dark active:scale-[0.98] transition-all duration-200 cursor-pointer shadow-[0_4px_24px_rgba(197,168,128,0.25)]"
+                className="flex items-center justify-center gap-2.5 px-7 py-4 bg-gold text-navy font-bold text-sm rounded-xl hover:bg-gold-dark active:scale-[0.98] transition-all duration-200 cursor-pointer shadow-[0_4px_24px_rgba(197,168,128,0.25)] w-full"
               >
                 <Phone className="h-4 w-4" />
                 Falar com Advogado
@@ -301,16 +273,16 @@ export default function Home() {
           </div>
 
           {/* Right: Portrait & Parallax Symbol */}
-          <div className="col-span-6 relative flex justify-end w-full max-w-lg mt-0">
+          <div className="col-span-6 relative flex justify-end w-full max-w-lg -mt-14 lg:-mt-14 xl:-mt-16">
             <ScrollReveal animation="fade-up" duration={1000} delay={200} className="relative z-10 w-full max-w-2xl">
-              <div className="relative w-full aspect-[3/4] scale-[1.25] origin-bottom">
+              <div className="relative w-full aspect-[3/4] scale-100 origin-top translate-y-0">
 
                 
                 <Image 
-                  src="/brand/IMG-20260526-WA0024.png" 
+                  src="/brand/hero-image-new.jpeg" 
                   alt="Advogado Lucas Matoso de Morais"
                   fill
-                  className="object-contain object-bottom relative z-10"
+                  className="object-contain object-bottom relative z-10 rounded-2xl"
                   sizes="2000px"
                   quality={100}
                   priority
@@ -372,15 +344,15 @@ export default function Home() {
             </div>
 
             {/* Mobile Image Content (inside flow) */}
-            <div className="lg:hidden lg:col-span-6 xl:col-span-5 relative mt-8 lg:mt-0 flex items-end justify-end -mr-5">
-               <ScrollReveal animation="fade-up" delay={200} className="w-full">
-                 <div className="relative w-full h-[450px] sm:h-[550px]">
+            <div className="lg:hidden w-full relative mt-4 mb-24 flex justify-center px-5">
+               <ScrollReveal animation="fade-up" delay={200} className="w-full max-w-[320px]">
+                 <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
                    <Image 
-                     src="/brand/IMG-20260526-WA0025.png" 
+                     src="/brand/sobre-image-new.jpeg" 
                      alt="Adv. Lucas Matoso"
                      fill
-                     className="object-contain object-right-bottom drop-shadow-2xl"
-                     sizes="(max-width: 1024px) 100vw, 2000px"
+                     className="object-cover object-top"
+                     sizes="320px"
                      quality={100}
                    />
                  </div>
@@ -391,12 +363,12 @@ export default function Home() {
         </div>
 
         {/* Desktop Image Content (absolute to section, touching right and bottom) */}
-        <div className="hidden lg:block absolute bottom-0 right-0 h-full w-[50vw] max-w-[900px] z-10 pointer-events-none">
+        <div className="hidden lg:block absolute bottom-0 right-0 h-[75%] w-[35vw] max-w-[500px] z-10 pointer-events-none">
           <Image 
-            src="/brand/IMG-20260526-WA0025.png" 
+            src="/brand/sobre-image-new.jpeg" 
             alt="Adv. Lucas Matoso"
             fill
-            className="object-contain object-bottom object-right drop-shadow-2xl pointer-events-auto"
+            className="object-contain object-bottom object-right drop-shadow-2xl pointer-events-auto rounded-2xl"
             sizes="(max-width: 1024px) 100vw, 2000px"
             quality={100}
             priority
@@ -856,13 +828,13 @@ export default function Home() {
             {/* Brand */}
             <div className="md:col-span-5">
               <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer">
-                <div className="relative h-10 w-44 flex-shrink-0">
+                <div className="relative h-20 w-[352px] max-w-full flex-shrink-0">
                   <Image 
                     src="/brand/logo_horizontal.png" 
                     alt="Matoso Morais Advocacia"
                     fill
-                    className="object-contain brightness-0 invert"
-                    sizes="176px"
+                    className="object-contain object-left brightness-0 invert"
+                    sizes="352px"
                   />
                 </div>
               </a>
@@ -907,7 +879,7 @@ export default function Home() {
 
       {/* Back to top */}
       {showBackToTop && (
-        <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <div className="fixed bottom-24 right-6 z-40 flex flex-col gap-3">
           <a 
             href="#inicio" 
             className="h-10 w-10 rounded-full bg-navy border border-white/10 text-gold flex items-center justify-center shadow-lg hover:bg-navy-mid active:scale-95 transition-all cursor-pointer"

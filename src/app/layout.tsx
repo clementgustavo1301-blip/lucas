@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Lato } from "next/font/google";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -32,7 +33,10 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${ebGaramond.variable} ${lato.variable} antialiased`}
     >
-      <body className="min-h-screen font-sans">{children}</body>
+      <body className="min-h-screen font-sans">
+        {children}
+        <WhatsAppWidget />
+      </body>
     </html>
   );
 }
