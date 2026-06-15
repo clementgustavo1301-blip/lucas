@@ -8,16 +8,8 @@ export default function WhatsAppWidget() {
   const [hasOpened, setHasOpened] = useState(false);
 
   useEffect(() => {
-    // Automacão: open the chat popup automatically after 5 seconds
-    const timer = setTimeout(() => {
-      if (!hasOpened) {
-        setIsOpen(true);
-        setHasOpened(true);
-      }
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [hasOpened]);
+    // Only mark as mounted
+  }, []);
 
   const handleWhatsAppClick = () => {
     const text = encodeURIComponent(
