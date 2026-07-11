@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Lato } from "next/font/google";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
-import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -37,7 +36,6 @@ export default function RootLayout({
       <body className="min-h-screen font-sans">
         {children}
         <WhatsAppWidget />
-        <CookieConsent />
       </body>
     </html>
   );
