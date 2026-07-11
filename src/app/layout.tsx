@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Lucas Matoso de Morais | Matoso Morais Advocacia",
   description: "Atendimento jurídico estratégico, humanizado e personalizado nas áreas previdenciária, trabalhista e cível em Mossoró - RN.",
   icons: {
-    icon: "/brand/file_00000000611c720ebece5ee323503a39.png"
+    icon: "/brand/logo_transparent.png"
   }
 };
 
