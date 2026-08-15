@@ -37,6 +37,7 @@ export default function WhatsAppWidget() {
             <button 
               onClick={() => setIsOpen(false)}
               className="text-white/70 hover:text-white transition-colors"
+              aria-label="Fechar"
             >
               <X className="h-4 w-4" />
             </button>

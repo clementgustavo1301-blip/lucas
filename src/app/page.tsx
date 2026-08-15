@@ -66,7 +66,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <main className="relative min-h-screen">
       
       {/* ─── HEADER ─── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -548,7 +548,7 @@ export default function Home() {
                 ].map((service, i) => (
                   <ScrollReveal key={service.title} animation="fade-up" delay={i * 40}>
                     <div className="py-5 border-b border-gray-200/80">
-                      <h4 className="font-serif text-navy font-semibold text-base">{service.title}</h4>
+                      <h3 className="font-serif text-navy font-semibold text-base">{service.title}</h3>
                       <p className="text-gray-500 text-sm mt-1 leading-relaxed">{service.desc}</p>
                     </div>
                   </ScrollReveal>
@@ -838,15 +838,15 @@ export default function Home() {
                   />
                 </div>
               </a>
-              <p className="text-gray-400 text-sm leading-relaxed mt-5 max-w-sm">
+              <p className="text-gray-300 text-sm leading-relaxed mt-5 max-w-sm">
                 Atendimento jurídico focado em garantir sua tranquilidade e restabelecer seus direitos com competência e respeito.
               </p>
             </div>
 
             {/* Nav */}
             <div className="md:col-span-3">
-              <h4 className="text-sm font-semibold text-white mb-4">Navegação</h4>
-              <ul className="space-y-2.5 text-sm text-gray-400">
+              <h2 className="text-sm font-semibold text-white mb-4">Navegação</h2>
+              <ul className="space-y-2.5 text-sm text-gray-300">
                 {navLinks.map((link) => (
                   <li key={link.id}>
                     <a href={`#${link.id}`} className="hover:text-gold transition-colors cursor-pointer">{link.label}</a>
@@ -857,16 +857,16 @@ export default function Home() {
 
             {/* Info */}
             <div className="md:col-span-4">
-              <h4 className="text-sm font-semibold text-white mb-4">Informações</h4>
-              <p className="text-gray-400 text-sm">OAB/RN Nº 24.036</p>
-              <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+              <h2 className="text-sm font-semibold text-white mb-4">Informações</h2>
+              <p className="text-gray-300 text-sm">OAB/RN Nº 24.036</p>
+              <p className="text-gray-300 text-sm mt-3 leading-relaxed">
                 Somos uma empresa inclusiva. Entre em contato caso precise de adaptações ou recursos de acessibilidade.
               </p>
             </div>
 
           </div>
 
-          <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500">
+          <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-400">
             <p>© {new Date().getFullYear()} Matoso Morais Advocacia. Todos os direitos reservados.</p>
             <div className="flex gap-5">
               <a href="#inicio" className="hover:text-gold transition-colors cursor-pointer">Termos de Uso</a>
@@ -890,6 +890,6 @@ export default function Home() {
         </div>
       )}
 
-    </div>
+    </main>
   );
 }
