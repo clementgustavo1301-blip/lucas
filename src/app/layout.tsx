@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Matoso Morais Advocacia | Advogado em Mossoró",
     description: "Atendimento jurídico estratégico nas áreas previdenciária, trabalhista e cível em Mossoró - RN.",
-    url: "https://matosomorais.com.br",
+    url: "https://matosomoraisadv.com.br",
     siteName: "Matoso Morais Advocacia",
     locale: "pt_BR",
     type: "website",
@@ -46,8 +46,8 @@ const jsonLd = {
     {
       "@type": "LegalService",
       "name": "Matoso Morais Advocacia",
-      "image": "https://matosomorais.com.br/brand/logo_horizontal.png",
-      "url": "https://matosomorais.com.br",
+      "image": "https://matosomoraisadv.com.br/brand/logo_horizontal.png",
+      "url": "https://matosomoraisadv.com.br",
       "telephone": "+5584991594538",
       "address": {
         "@type": "PostalAddress",
@@ -79,7 +79,7 @@ const jsonLd = {
       "@type": "Person",
       "name": "Lucas Matoso de Morais",
       "jobTitle": "Advogado",
-      "url": "https://matosomorais.com.br",
+      "url": "https://matosomoraisadv.com.br",
       "sameAs": [
         "https://instagram.com",
         "https://linkedin.com",
