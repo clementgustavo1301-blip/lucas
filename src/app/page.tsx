@@ -83,8 +83,7 @@ export default function Home() {
                 src="/brand/logo_horizontal.png" 
                 alt="Matoso Morais Advocacia"
                 fill
-                quality={100}
-                unoptimized
+                quality={85}
                 className={`object-contain object-left transition-all duration-300 ${
                   headerSolid 
                     ? 'brightness-0' 
@@ -191,6 +190,7 @@ export default function Home() {
               alt="" aria-hidden="true"
               fill className="object-contain"
               sizes="420px"
+              priority
             />
           </div>
         </div>
@@ -207,8 +207,8 @@ export default function Home() {
                alt="Advogado Lucas Matoso de Morais"
                fill
                className="object-cover object-top rounded-3xl shadow-2xl"
-               sizes="300px"
-               quality={100}
+               sizes="(max-width: 768px) 100vw, 300px"
+               quality={85}
                priority
              />
              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy/90 to-transparent rounded-b-3xl pointer-events-none" />
@@ -283,8 +283,8 @@ export default function Home() {
                   alt="Advogado Lucas Matoso de Morais"
                   fill
                   className="object-contain object-bottom relative z-10 rounded-2xl"
-                  sizes="2000px"
-                  quality={100}
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  quality={85}
                   priority
                 />
                 
@@ -352,8 +352,8 @@ export default function Home() {
                      alt="Adv. Lucas Matoso"
                      fill
                      className="object-cover object-top"
-                     sizes="320px"
-                     quality={100}
+                     sizes="(max-width: 1024px) 100vw, 320px"
+                     quality={85}
                    />
                  </div>
                </ScrollReveal>
@@ -369,8 +369,8 @@ export default function Home() {
             alt="Adv. Lucas Matoso"
             fill
             className="object-contain object-bottom object-right drop-shadow-2xl pointer-events-auto rounded-2xl"
-            sizes="(max-width: 1024px) 100vw, 2000px"
-            quality={100}
+            sizes="(max-width: 1024px) 100vw, 600px"
+            quality={85}
             priority
           />
         </div>
