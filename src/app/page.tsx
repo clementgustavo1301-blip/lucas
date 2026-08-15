@@ -2,7 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { MinimalMap } from '@/components/Map';
+import dynamic from 'next/dynamic';
+const MinimalMap = dynamic(() => import('@/components/Map').then(mod => mod.MinimalMap), { 
+  ssr: false, 
+  loading: () => <div className="w-full h-full bg-navy-mid animate-pulse rounded-2xl" /> 
+});
 import { 
   Scale, 
   Phone, 
