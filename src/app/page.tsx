@@ -191,6 +191,7 @@ export default function Home() {
               fill className="object-contain"
               sizes="420px"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>
@@ -210,6 +211,7 @@ export default function Home() {
                sizes="(max-width: 768px) 100vw, 300px"
                quality={85}
                priority
+               fetchPriority="high"
              />
              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy/90 to-transparent rounded-b-3xl pointer-events-none" />
           </div>
